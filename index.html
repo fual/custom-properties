@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Кастомные свойства в css</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
+</head>
+<body class="shower list">
+	<header class="caption">
+		<h1 >Кастомные свойства в css</h1>
+		<p>Alexey Khlebaev</p>
+	</header>
+	<section class="slide" id="cover">
+		<h2 style="    bottom: 20px;
+    position: absolute;
+    text-align: center;">Кастомные свойства в css</h2>
+
+		<img src="pictures/cover.jpg" alt="" class="cover">
+		<!--
+			To apply styles to the certain slides
+			set slide ID to get needed elements
+			-->
+		<style>
+			#cover h2 {
+				margin:30px 0 0;
+				color:#FFF;
+				text-align:center;
+				font-size:70px;
+				}
+			#cover p {
+				margin:10px 0 0;
+				text-align:center;
+				color:#FFF;
+				font-style:italic;
+				font-size:20px;
+				}
+				#cover p a {
+					color:#FFF;
+					}
+		</style>
+	</section>
+	<section class="slide">
+		<h2>Куда катится css?</h2>
+			<img class="next cover" 
+			style="margin-top: 90px;"
+			src="pictures/griffin.gif" alt="css progress" /> 
+		
+	</section>
+	<section class="slide">
+		<h2>Куда катится css?</h2>
+		<div style="text-align: center" class="note">
+			<img src="pictures/progressCss.png" alt="css progress" /> 
+		</div>
+		<!--
+		<div class="note" style="overflow: hidden">
+			<img style="width: 200px; float: left;" src="pictures/cofee.png" alt="coffeescript" />  
+			<img style="height: 124px;
+    margin-left: 100px;
+    float: left;
+    margin-top: 38px;" src="pictures/js.png" alt="coffeescript" />
+		</div>
+		<div class="note">
+			<img style="width: 200px; float: left; margin-top: 35px;" src="pictures/sass.png" alt="coffeescript" /> 
+			<img style="width: 200px; float: left; margin-left: 100px;" src="pictures/css.png" alt="coffeescript" />
+		</div>
+		-->
+	</section>
+	<section class="slide">
+		<h2>Цели</h2>
+		<ol>
+			<li>Показать, что css реализует фичи препроцессоров</li>
+			<li>Рассказать о таких примерах (Custom Properties, @​apply)</li>
+			<li>Демо</li>
+		</ol>
+	</section>
+	<section class="slide">
+		<h2>Кастомные свойства</h2>
+		<ol>
+			<li>Аналог переменных в препроцессорах</li>
+		</ol>
+		<h3>Какие проблемы решают:<h3>
+		<ul>
+			<li class="next">Уменьшение количества повторяющегося кода в CSS</li>
+			<li class="next">Гибкость и управляемость кода</li>
+			<li class="next">Cоздание впечатляющих эффектов (смены тем на лету)</li>
+			<li class="next">Потенциально, создание полифилов для будущих возможностей CSS</li>
+			<li class="next">Название содержит семантическую информацию</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Кастомные свойства</h2>
+		<h3>Поддержка</h3>
+		<img style="height: 290px" src="pictures/cp_canIuse.png" />
+	</section>
+	<section class="slide">
+		<h2>Кастомные свойства</h2>
+		<pre>
+			<code>:root {</code>
+			<code class="mark">  --main-bg-color: brown;</code>
+			<code>}</code>
+			<code> </code>
+			<code>body {</code>
+  			<code  class="mark">	background-color: <span>var(--main-bg-color);<span></code>
+			<code>}</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Кастомные свойства. Js</h2>
+		<pre>
+			<code>var styles = getComputedStyle(document.documentElement);</code>
+			<code>var value = String(styles.<mark class="important">getPropertyValue('--primary-color')</mark>).trim();</code>
+			<code>styles.<mark class="important">setProperty('--primary-color', 'green')</mark>;</code>
+		</pre>
+	</section>
+
+
+	<section class="slide">
+		<h2>Кастомные свойства. Первые впечатления</h2>
+		<div>
+			<img src="pictures/What-Meme-13.jpg" style="float: left"/>
+			<h3>Все круто, но</h3>
+			<ul>
+				<li class="next">Что за уродливый синтаксис?</li>
+				<li class="next">В Sass уже есть переменные</li>
+			</ul>
+		</div>
+	</section>
+	<section class="slide">
+		<h2>Что не могут препроцесорные переменные.<br/>
+		<span style="color: red; font-size: 24px">Меняться в зависимости от @media запросов</span></h2>
+		<pre>
+			<code>$gutter: 1em;</code>
+			<code>@media (min-width: 30em) {</code>
+			<code>  $gutter: 2em;</code>
+			<code>}</code>
+			<code>.Container {</code>
+			<code>  padding: $gutter;</code>
+			<code>}</code>
+		</pre>
+	</section>
+	<section class="slide">
+		<h2>Что не могут препроцесорные переменные.<br/>
+		<span style="color: red; font-size: 24px">Меняться в зависимости от вложенности</span></h2>
+		<pre>
+			<code>$font-size: 1em;</code>
+			<code>.user-setting-large-text {</code>
+			<code>  $font-size: 1.5em;</code>
+			<code>}</code>
+			<code>body {</code>
+			<code>  font-size: $font-size;</code>
+			<code>}
+			</code>
+		</pre>
+	</section>
+	<section class="slide" style="background-color: black" id="picture">
+		<h2>Demo</h2>
+		<img style="width: 1028px" src="http://i.imgur.com/PrsSsCG.gif" alt="" class="cover">
+		<style>
+			#picture h2 {
+				color:#FFF;
+				}
+		</style>
+	</section>
+	<section class="slide">
+		<h2>@apply</h2>
+ 		<ul>
+			<li class="next">Аналог миксина</li>
+			<li class="next">Позволяет подключать набор свойств</li>
+			<li class="next">Синтаксис как у кастомных свойств, только с "{ }"</li>
+		</ul>
+	</section>
+	<section class="slide">
+		<h2>@apply</h2>
+		<img class="next" src="pictures/apply.jpg" style="height: 450px"/>
+	</section>
+
+	<section class="slide">
+		<h2>Выводы</h2>
+		<ul>
+			<li>CSS стремится воплотить фишки препроцессоров</li>
+			<li class="next">Скоро мы будем снова писать на чистом CSS</li>
+			<li class="next">Новые инструменты для нетривиальных задач</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Ссылки</h2>
+		<ol>
+			<li>http://frontender.info/css-variables-why-should-you-care/</li>
+			<li>http://philipwalton.com/articles/why-im-excited-about-native-css-variables/</li>
+			<li>https://blog.gospodarets.com/css_properties_in_depth</li>
+			<li>https://tabatkins.github.io/specs/css-apply-rule/</li>
+			<li>https://blog.gospodarets.com/css_apply_rule?utm_source=CSS-Weekly&utm_campaign=Issue-211&utm_medium=email</li>
+
+		</ol>
+	</section>
+	<section class="slide" id="see-more">
+		<h2 class="shout">
+			Спасибо!
+		</h2>
+		<style>
+			#see-more h2 {
+				font-size:100px
+				}
+			#see-more img {
+				width:0.72em;
+				height:0.72em;
+				}
+		</style>
+	</section>
+	<p class="badge">
+		<a href="https://github.com/shower/shower">Fork me on GitHub</a>
+	</p>
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"></div>
+	<script src="node_modules/shower-core/shower.min.js"></script>
+	<!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+	<!-- Photos by John Carey, fiftyfootshadows.net -->
+</body>
+</html>
