@@ -1,62 +1,48 @@
-# Shower Presentation Template
+# Сделано на основе Shower
 
 <img src="pictures/logo.png" width="250" alt="Shower logo">
-
-> Shower ['ʃəuə] noun. A person or thing that shows.
-
-1. Built on HTML, CSS and vanilla JavaScript
-2. Works in all modern browsers
-3. Themes are separated from engine
-4. Modular and extensible
-5. Fully keyboard accessible
-6. Printable to PDF
 
 [See it in action](http://shwr.me/). Includes [Ribbon](https://github.com/shower/ribbon/) and [Material](https://github.com/shower/material/) themes, and [core](https://github.com/shower/core/) with plugins.
 
 Follow [@shower_me](https://twitter.com/shower_me) for support and updates, [file an issue](https://github.com/shower/shower/issues/new) if you have any.
 
 ## Quick Start
-
-1. Download and unzip [template archive](http://shwr.me/shower.zip)
+1. [Fork](https://github.com/shower/shower/fork) this repository
 2. Open `index.html` and start creating your presentation
 
-## Advanced
+#Описание.
+4) Кастомные свойства. Аналог препроцессорных переменных.  Они помогают уменьшить повторяемость кода.
+	Б) На больших сайтах бывает нужно сменить какой-то постоянно повторяющийся цвет, и автозаменой это делать не безопасно. Или нужно сменить цветовую схему
+	Похожая ситуация с фреймворками. Чтобы их можно было удобно настраивать нужны переменные.
+	В) Препроцессорные переменные имеют очень серьёзный недостаток: они статичны и не могут меняться на лету. Нативные Переменные позволяют менять темы на лету.
+	Переменные позовляют добавить денамику в дикларативный цсс.
+	Г) Использование переменных дает нам симантическую информацию.  Смысл --main-text-color  более понять чем #00ff00.
 
-1. [Fork](https://github.com/shower/shower/fork) this repository
-2. Go to fork setting and rename it: `shower` → `my-slides`
-2. Clone it to your computer: `git clone git@github.com:username/my-slides.git`
-3. Go to `my-slides` folder and install dependencies: `npm install`
-4. Start creating your presentation
+5) Доступны в новых браузерах, к сожалению не имеют возможности иметь обратную совестимость.
+На мой взгляд, можно эксперементировать во внутренних инструментах или в личных проектах)
+6) Синтаксис кастомных переменных.
+	Для объявление кастомных свойств используется синтаксис с 2-мя минусами.
+	Для использования приминяется функция var(). В которую в качестве аргумента передается переменная.
+	Вторым аргументом можно передать дефолтное значение
+6) JavaScript. Чтобы получить значение кастомного свойства, используйте метод getPropertyValue() объекта CSSStyleDeclaration.
+Аналогично, чтобы динамически менять значение кастомного свойства, используйте метод setProperty() объекта CSSStyleDeclaration.
+7) Первые впечатления. Эдди Османи в деакбре прошлого года обуликовал в твитере, что хром реализовал, кастостомные переменные.
+И что он получил в ответ. Было много неодобрительных коммпентариев. Суть которых?
+8) Синтакис такой, а не $foo
+  А) Чтобы не было проблем с препроцессорами
+  Б) Более подробно об этом можно прочесть в статье одного из авторов спецификации, Таба Аткинса (Tab Atkins).
+10) Препроцессорные переменные не наследуются. Препроцессорные переменные сложно совмещать с другим код. 
+Например если подтягиваешь еще другую либу по CDN
+11) Примеры. И фишки использования
+	А) Демо 1
+	Б) https://googlechrome.github.io/samples/css-custom-properties/index.html
+	Взгляните на пример, чтобы получить представление о разных интересных техниках, которые станут доступным благодаря кастомным свойствам
+12) @​apply
+@apply Аналог миксинов.
+Реализовано в хроме. Таб Анткинсон.
+- Позовляет вставлять набор свойств.
+- Для использования применяется функция apply();
 
-Once you’re done you can build a clean copy of your slides:
-
-	npm run prepare
-
-And you’ll find your presentation in `prepared` folder with only needed files in it. You can also run `npm run archive` to get the same files in `archive.zip`. But there’s more! You can easily publish your presentation online by running:
-
-	npm run publish
-
-And you’ll have your slides published on `http://username.github.io/my-slides/`.
-
-## Usage Examples
-
-- [Installable Web Apps](http://pepelsbey.net/pres/web-apps/)
-- [Clear and Sharp](http://pepelsbey.net/pres/clear-and-sharp/)
-- [CSS Management](http://pepelsbey.net/pres/knife-train/)
-- [Push it!](http://pepelsbey.net/pres/push-it/)
-- [Pre-fixes](http://pepelsbey.net/pres/pre-fixes/)
-- [Web In Curves](http://pepelsbey.net/pres/web-in-curves/)
-- [Sense Coding](http://pepelsbey.net/pres/sense-coding/)
-
-## Browser Support
-
-Latest stable versions of Chrome, Internet Explorer, Firefox, Opera and Safari are supported.
-
-## Contributing
-
-You’re always welcome to contribute. Fork project, make changes and send it as pull request. But it’s better to file an [issue](https://github.com/shower/shower/issues) with your idea first. Read [contributing rules](CONTRIBUTING.md) for more details.
-
-Main contributors in historical order: [pepelsbey](https://github.com/pepelsbey), [jahson](https://github.com/jahson), [miripiruni](https://github.com/miripiruni), [kizu](https://github.com/kizu), [artpolikarpov](https://github.com/artpolikarpov), [tonyganch](https://github.com/tonyganch), [zloylos](https://github.com/zloylos).
-
----
-Licensed under [MIT License](LICENSE.md).
+13) Выводы
+- Css стримится вопладить фишки препроцессоров, и в будущем мы будем снова писать на чистом цсс
+- Для вечно зеленых браузеров для решения нетревиальных задач есть интересный инструмент.
