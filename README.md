@@ -1,18 +1,20 @@
-http://fual.github.io/custom-properties/
-# Сделано на основе Shower
+# Custom Properties v.1
 
-<img src="pictures/logo.png" width="250" alt="Shower logo">
+Презентация о кастомных свойствах и @apply
 
+[Посмотреть](http://fual.github.io/custom-properties/)
+
+## Сделано на основе [Shower](https://github.com/shower/shower)
 [See it in action](http://shwr.me/). Includes [Ribbon](https://github.com/shower/ribbon/) and [Material](https://github.com/shower/material/) themes, and [core](https://github.com/shower/core/) with plugins.
-
 Follow [@shower_me](https://twitter.com/shower_me) for support and updates, [file an issue](https://github.com/shower/shower/issues/new) if you have any.
 
 ## Quick Start
 1. [Fork](https://github.com/shower/shower/fork) this repository
 2. Open `index.html` and start creating your presentation
 
-#Описание.
-4) Кастомные свойства. Аналог препроцессорных переменных.  Они помогают уменьшить повторяемость кода.
+#Краткое описание.
+4) Кастомные свойства. 
+	А) Аналог препроцессорных переменных.  Они помогают уменьшить повторяемость кода.
 	Б) На больших сайтах бывает нужно сменить какой-то постоянно повторяющийся цвет, и автозаменой это делать не безопасно. Или нужно сменить цветовую схему
 	Похожая ситуация с фреймворками. Чтобы их можно было удобно настраивать нужны переменные.
 	
@@ -48,8 +50,7 @@ Follow [@shower_me](https://twitter.com/shower_me) for support and updates, [fil
 	Б) https://googlechrome.github.io/samples/css-custom-properties/index.html
 	Взгляните на пример, чтобы получить представление о разных интересных техниках, которые станут доступным благодаря кастомным свойствам
 
-12) @​apply
-@apply Аналог миксинов.
+12) @apply Аналог миксинов.
 Реализовано в хроме. Таб Анткинсон.
 - Позовляет вставлять набор свойств.
 - Для использования применяется функция apply();
