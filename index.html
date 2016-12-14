@@ -5,7 +5,19 @@
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+	<style>
+		.slide {
+			padding-top: 30px;
+			padding-left:;
+		}
+		.slide::after {
+			right: 10px;
+		}
+		.slide pre {
+			font-size: 20px
+		}
+	</style>
 </head>
 <body class="shower list">
 	<header class="caption">
@@ -68,14 +80,6 @@
 		-->
 	</section>
 	<section class="slide">
-		<h2>Цели</h2>
-		<ol>
-			<li>Показать, что css реализует фичи препроцессоров</li>
-			<li>Рассказать о таких примерах (Custom Properties, @​apply)</li>
-			<li>Демо</li>
-		</ol>
-	</section>
-	<section class="slide">
 		<h2>Кастомные свойства</h2>
 		<ol>
 			<li>Аналог переменных в препроцессорах</li>
@@ -84,8 +88,7 @@
 		<ul>
 			<li class="next">Уменьшение количества повторяющегося кода в CSS</li>
 			<li class="next">Гибкость и управляемость кода</li>
-			<li class="next">Cоздание впечатляющих эффектов (смены тем на лету)</li>
-			<li class="next">Потенциально, создание полифилов для будущих возможностей CSS</li>
+			<li class="next">Cоздание впечатляющих эффектов (смены тем на лету) - !</li>
 			<li class="next">Название содержит семантическую информацию</li>
 		</ul>
 	</section>
@@ -133,29 +136,85 @@
 		<h2>Что не могут препроцесорные переменные.<br/>
 		<span style="color: red; font-size: 24px">Меняться в зависимости от @media запросов</span></h2>
 		<pre>
-			<code>$gutter: 1em;</code>
+			<code>:root {</code>
+			<code> --gutter: 1em;</code>
+			<code>}</code>
 			<code>@media (min-width: 30em) {</code>
-			<code>  $gutter: 2em;</code>
+			<code>  --gutter: 2em;</code>
 			<code>}</code>
 			<code>.Container {</code>
-			<code>  padding: $gutter;</code>
+			<code>  padding: var(--gutter);</code>
+			<code>}</code>
+		</pre>
+	</section>
+		<section class="slide">
+		<h2>Что не могут препроцесорные переменные.<br/>
+		<span style="color: red; font-size: 24px">Меняться в зависимости от @media запросов</span></h2>
+		<pre>
+			<code>gutter: 1em;</code>
+			<code>@media (min-width: 30em) {</code>
+			<code>  gutter: 2em;</code>
+			<code>}</code>
+			<code>.Container {</code>
+			<code>  padding: gutter;</code>
 			<code>}</code>
 		</pre>
 	</section>
 	<section class="slide">
-		<h2>Что не могут препроцесорные переменные.<br/>
-		<span style="color: red; font-size: 24px">Меняться в зависимости от вложенности</span></h2>
+		<h2>Что не могут препроцесорные переменные.
+		<span style="color: red; font-size: 24px">Меняться в зависимости от @media запросов</span></h2>
 		<pre>
-			<code>$font-size: 1em;</code>
-			<code>.user-setting-large-text {</code>
-			<code>  $font-size: 1.5em;</code>
+			<code>gutter = 12px</code>
+			<code>.Container {</code>
+			<code>	padding: gutter;</code>
 			<code>}</code>
-			<code>body {</code>
-			<code>  font-size: $font-size;</code>
-			<code>}
-			</code>
+			<code>@media (min-width: 30em) {</code>
+			<code>  gutter = 14px</code>
+			<code>.Container {</code>
+			<code>   padding: gutter;</code>
+			<code>  }</code>
+			<code>}</code>
 		</pre>
 	</section>
+
+	<section class="slide">
+		<h2>Что не могут препроцесорные переменные.<br/>
+		<span style="color: red; font-size: 24px">Меняться в зависимости от вложенности</span></h2>
+		<pre style="float: left">
+			<code>:root {</code>
+			<code>  --titleColor: red;</code>
+			<code>}</code>
+			<code>.title {</code>
+			<code>  color: var(--titleColor);</code>
+			<code>}</code>
+			<code>.sideBar {</code>
+			<code>  --titleColor: blue;</code>
+			<code>}</code>
+		</pre>
+		<img style="float: right;" src="pictures/inherits.png" />
+	</section>
+
+	<section class="slide">
+		<h2>Что не могут препроцесорные переменные.<br/>
+		<span style="color: red; font-size: 24px">Меняться в зависимости от вложенности</span></h2>
+		<pre style="float: left">
+			<code>--titleColor = #fff;</code>
+			<code>.title {</code>
+			<code>  --titleColor = #000</code>
+			<code>}</code>
+			<code>.sideBar .title {</code>
+			<code>  color: --titleColor</code>
+			<code>}</code>
+		</pre>
+
+		<pre style="float: right">
+			<code>.sideBar .title {</code>
+  			<code>color: #fff;</code>
+			<code>}</code>
+		</pre>
+		</pre>
+	</section>
+
 	<section class="slide" style="background-color: black" id="picture">
 		<h2>Demo</h2>
 		<img style="width: 1028px" src="http://i.imgur.com/PrsSsCG.gif" alt="" class="cover">
@@ -220,7 +279,7 @@
 		just remove “progress” element.
 		-->
 	<div class="progress"></div>
-	<script src="node_modules/shower-core/shower.min.js"></script>
+	<script src="shower/shower.min.js"></script>
 	<!-- Copyright © 2015 Yours Truly, Famous Inc. -->
 	<!-- Photos by John Carey, fiftyfootshadows.net -->
 </body>
