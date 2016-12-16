@@ -18,6 +18,30 @@
 			font-size: 20px
 		}
 	</style>
+		<style>
+		:root {
+			--baseText: #fff;
+		}
+		#example1 {
+			color: var(--baseText);
+			background: var(--baseText);
+
+		}
+		#example1 .text{
+			color: var(--baseText);
+			filter: invert(1);
+		}
+	</style>
+	<script>
+	window.onload = () => {
+		var styles = getComputedStyle(document.documentElement);
+		var inputExample1 = document.getElementById('example1__input');
+		inputExample1.addEventListener("change", () => {
+			let inputExample1Val = inputExample1.value;
+			document.documentElement.style.setProperty('--baseText', inputExample1Val);
+		});
+	}
+	</script>
 </head>
 <body class="shower list">
 	<header class="caption">
@@ -56,7 +80,7 @@
 	<section class="slide">
 		<h2>Куда катится css?</h2>
 			<img class="next cover" 
-			style="margin-top: 90px;"
+			style="margin-top: 30px;"
 			src="pictures/griffin.gif" alt="css progress" /> 
 		
 	</section>
@@ -79,11 +103,76 @@
 		</div>
 		-->
 	</section>
+
+	<section class="slide" style="color: #fff; font-size: 80px; line-height: 80px; 	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	-webkit-align-items: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center; padding: 0">
+	<style>
+	.slide__side-left, .slide__side-right {
+		width: 50%; 
+		text-align: center;
+	}
+	.slide__side-left:before, .slide__side-right:before {
+		width: 50%;
+		height: 100%;
+		display: block;
+		content: '';
+		top: 0;
+		z-index: -1;
+		position: absolute;
+	}
+	.slide__side-left:before{
+		left: 0;
+		background: #ff2400;
+	}
+	.slide__side-right:before  {
+		 background: #ccccff;
+		 right: 0;
+	}
+	#example1__input {
+		    height: 38px;
+		
+	ъ
+	}
+	</style>
+		<div class="slide__side-left"> 
+			Custom Properties
+		</div>
+		<div class="slide__side-right" style="width: 50%;">
+				@apply
+		</div>
+
+		
+	</section>
+
+	<section class="slide" style="background: #ff2400; font-size: 80px; display: flex; align-items: center; ">
+		<div> 
+			Custom Properties
+		</div>		
+	</section>  
+
+	<section class="slide" id="example1">
+<div class="text">
+		<h2>Custom Properties (Css переменные)</h2>
+
+		<ul>
+			<li class="next">Прорыв в CSS. Аналогичного функционала раньше не было</li>
+			<li class="next">Мощный инструмент, ограничение - ваша фантазия</li>
+			<li class="next">Не бойтесь использовать!</li>
+		</ul>
+
+		<div class="next">
+			--baseText = <input id="example1__input" style="height: 30px; background: inherit; font-size: 20px; color: inherit; border: none" value="#fff" type="text" />
+		</div>
+		</div>
+	</section>
+
 	<section class="slide">
 		<h2>Кастомные свойства</h2>
-		<ol>
-			<li>Аналог переменных в препроцессорах</li>
-		</ol>
 		<h3>Какие проблемы решают:<h3>
 		<ul>
 			<li class="next">Уменьшение количества повторяющегося кода в CSS</li>
@@ -132,54 +221,141 @@
 			</ul>
 		</div>
 	</section>
+	<section class="slide" style="background: #ff2400; font-size: 60px; display: flex; align-items: center; ">
+		<div> 
+			Синтаксис
+		</div>		
+	</section>
+
+	<section class="slide white">
+		<h2><strike>$foo</strike></h2>
+		<ul>
+			<li>Допустимая лексема CSS.</li>
+			<li><code>--variable:&nbsp;<mark>value</mark></code>.</li>
+			<li>Fallback.</li>
+		</ul>
+		<footer class="footer">
+			<ul>
+				<li>Слово авторам спеки Табу Аткинсу и Дэвиду Глазману.</li>
+				<li>$foo — неправильные аналогии с переменными ЯП и макросами препроцессоров, а это не то, чем являются пользовательские свойства:
+					<ul>
+						<li>Значение — набор допустимых лексем CSS, не предполагают частичную замену строк.</li>
+						<li>Использование только на правой стороне декларации — неуместное ограничение для переменных или макросов.</li>
+						<li>Необходим опциональный аргумент для механизма fallback'а.</li>
+					</ul>
+				</li>
+			</ul>
+		</footer>
+	</section>
+
+	<section class="slide" style="background: #ff2400; font-size: 60px; display: flex; align-items: center; ">
+		<div> 
+			Отличия от переменных в препроцессорах
+		</div>		
+	</section>
+
 	<section class="slide">
-		<h2>Что не могут препроцесорные переменные.<br/>
-		<span style="color: red; font-size: 24px">Меняться в зависимости от @media запросов</span></h2>
-		<pre>
-			<code>:root {</code>
-			<code> --gutter: 1em;</code>
-			<code>}</code>
-			<code>@media (min-width: 30em) {</code>
-			<code>  --gutter: 2em;</code>
+			<ul>
+				<li>Переменные препроцессоров — исчезают при сборке.</li>
+				<li>CSS-переменные:
+					<ul>
+						<li>работают в runtime, доступны для чтения/изменения;</li>
+						<li>живут в DOM'е, ограничены скоупом узла, наследуются до последнего потомка;</li>
+						<li>учитывают каскад!</li>
+					</ul>
+				</li>
+			</ul>
+	</section>
+
+	<section class="slide" style="background: #ff2400; font-size: 60px; display: flex; align-items: center; ">
+		<div> 
+			@media
+		</div>		
+	</section>
+
+	<section class="slide">
+		<h2>@media запросы<br/>
+		<span style="color: red; font-size: 30px">Stylus</span></h2>
+		<pre style="float: left">
+			<code>gutter = 5px;</code>
+			<code>@media (min-width: 100px) {</code>
+			<code>  gutter = 20px;</code>
 			<code>}</code>
 			<code>.Container {</code>
-			<code>  padding: var(--gutter);</code>
+			<code>  padding = gutter;</code>
 			<code>}</code>
 		</pre>
-	</section>
-		<section class="slide">
-		<h2>Что не могут препроцесорные переменные.<br/>
-		<span style="color: red; font-size: 24px">Меняться в зависимости от @media запросов</span></h2>
-		<pre>
-			<code>gutter: 1em;</code>
-			<code>@media (min-width: 30em) {</code>
-			<code>  gutter: 2em;</code>
-			<code>}</code>
+
+		<pre class="next" style="float: left; margin-left: 200px">
 			<code>.Container {</code>
-			<code>  padding: gutter;</code>
-			<code>}</code>
-		</pre>
-	</section>
-	<section class="slide">
-		<h2>Что не могут препроцесорные переменные.
-		<span style="color: red; font-size: 24px">Меняться в зависимости от @media запросов</span></h2>
-		<pre>
-			<code>gutter = 12px</code>
-			<code>.Container {</code>
-			<code>	padding: gutter;</code>
-			<code>}</code>
-			<code>@media (min-width: 30em) {</code>
-			<code>  gutter = 14px</code>
-			<code>.Container {</code>
-			<code>   padding: gutter;</code>
-			<code>  }</code>
+  			<code> padding: 5px;</code>
 			<code>}</code>
 		</pre>
 	</section>
 
 	<section class="slide">
+		<h2>@media запросы<br/>
+		<span style="color: red; font-size: 30px">Css переменные</span></h2>
+		<pre>
+			<code>:root {</code>
+			<code>  --gutter: 5px;</code>
+			<code>}</code>
+			<code>@media (min-width: 100px) {</code>
+			<code>  --gutter: 20px;</code>
+			<code>}</code>
+			<code>.Container {</code>
+			<code>   padding: var(--gutter);</code>
+			<code>}</code>
+		</pre>
+	</section>
+<!--
+	<section class="slide">
+		<h2>@media запросы<br/>
+		<span style="color: red; font-size: 30px">PostCss</span></h2>
+		<pre>
+			
+			<code>.Container {</code>
+			<code>	padding: 5px;</code>
+			<code>}</code>
+			<code>@media (min-width: 100px) {</code>
+			<code>.Container {</code>
+			<code>   padding: 20px;</code>
+			<code>  }</code>
+			<code>}</code>
+		</pre>
+	</section>
+-->
+
+	<section class="slide" style="background: #ff2400; font-size: 60px; display: flex; align-items: center; ">
+		<div> 
+			Каскад
+		</div>		
+	</section>
+
+	<section class="slide">
 		<h2>Что не могут препроцесорные переменные.<br/>
-		<span style="color: red; font-size: 24px">Меняться в зависимости от вложенности</span></h2>
+		<span style="color: red; font-size: 30px">Stylus</span></h2>
+		<pre style="float: left">
+			<code>titleColor = #fff;</code>
+			<code>.title {</code>
+			<code>  titleColor = #000</code>
+			<code>}</code>
+			<code>.sideBar .title {</code>
+			<code>  color: --titleColor</code>
+			<code>}</code>
+		</pre>
+
+		<pre class="next" style="float: left; margin-left: 200px">
+			<code>.sideBar .title {</code>
+  			<code>color: #fff;</code>
+			<code>}</code>
+		</pre>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Что не могут препроцесорные переменные.<br/>
+		<span style="color: red; font-size: 30px">Css переменные</span></h2>
 		<pre style="float: left">
 			<code>:root {</code>
 			<code>  --titleColor: red;</code>
@@ -191,38 +367,39 @@
 			<code>  --titleColor: blue;</code>
 			<code>}</code>
 		</pre>
-		<img style="float: right;" src="pictures/inherits.png" />
+	</section>
+
+	<section class="slide" style="background: #ff2400; font-size: 60px; display: flex; align-items: center; ">
+		<div> 
+			Примеры использования
+		</div>		
 	</section>
 
 	<section class="slide">
-		<h2>Что не могут препроцесорные переменные.<br/>
-		<span style="color: red; font-size: 24px">Меняться в зависимости от вложенности</span></h2>
-		<pre style="float: left">
-			<code>--titleColor = #fff;</code>
-			<code>.title {</code>
-			<code>  --titleColor = #000</code>
-			<code>}</code>
-			<code>.sideBar .title {</code>
-			<code>  color: --titleColor</code>
-			<code>}</code>
-		</pre>
-
-		<pre style="float: right">
-			<code>.sideBar .title {</code>
-  			<code>color: #fff;</code>
-			<code>}</code>
-		</pre>
-		</pre>
+		<h2>Яндекс. Главная страница поиска</h2>
+		<p>Для чего используются css переменные</p>
+		<ul>
+			<li>Эксперементы</li>
+			<li>Контроль над цветом</li>
+			<li>Возможность изменять константы менеджерам</li>
+		</ul>
+	</section>
+	
+	<section class="slide white">
+		<h2>Рекомендации</h2>
+		<ul>
+			<li class="next"><code>:root</code></li>
+			<li class="next"><code>var(--property, fallback)</code></li>
+			<li class="next"><code>@supports</code></li>
+			<li class="next"><code>--property-calc</code></li>
+			<li class="next"><code>initial</code></li>
+		</ul>
 	</section>
 
-	<section class="slide" style="background-color: black" id="picture">
-		<h2>Demo</h2>
-		<img style="width: 1028px" src="http://i.imgur.com/PrsSsCG.gif" alt="" class="cover">
-		<style>
-			#picture h2 {
-				color:#FFF;
-				}
-		</style>
+	<section class="slide" style="background: #ff2400; font-size: 60px; display: flex; align-items: center; ">
+		<div> 
+			@apply
+		</div>		
 	</section>
 	<section class="slide">
 		<h2>@apply</h2>
@@ -240,9 +417,9 @@
 	<section class="slide">
 		<h2>Выводы</h2>
 		<ul>
-			<li>CSS стремится воплотить фишки препроцессоров</li>
-			<li class="next">Скоро мы будем снова писать на чистом CSS</li>
-			<li class="next">Новые инструменты для нетривиальных задач</li>
+			<li>Фичи из препроцессоров внедряются в CSS</li>
+			<li>Css переменные - мощный инструмент!</li>
+			<li>Не надо бояться использовать CSS переменные</li>
 		</ul>
 	</section>
 
@@ -256,7 +433,7 @@
 			<li>https://blog.gospodarets.com/css_apply_rule?utm_source=CSS-Weekly&utm_campaign=Issue-211&utm_medium=email</li>
 
 		</ol>
-	</section>
+	</section>  
 	<section class="slide" id="see-more">
 		<h2 class="shout">
 			Спасибо!
