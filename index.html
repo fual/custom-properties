@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Кастомные свойства в CSS</title>
+	<title>Переменные в CSS</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,13 +43,11 @@
 </head>
 <body class="shower list">
 	<header class="caption">
-		<h1 >Кастомные свойства в CSS</h1>
+		<h1>Переменные в CSS</h1>
 		<p>Alexey Khlebaev</p>
 	</header>
 	<section class="slide" id="cover">
-		<h2 style="    bottom: 20px;
-    position: absolute;
-    text-align: center;">Кастомные свойства в CSS</h2>
+		<h2 style="bottom: 20px; position: absolute; text-align: center;">Переменные в CSS</h2>
 
 		<img src="pictures/cover.jpg" alt="" class="cover">
 		<!--
@@ -170,7 +168,7 @@
 	</section>
 
 	<section class="slide">
-		<h2>Кастомные свойства</h2>
+		<h2>Custom Properties (CSS переменные)</h2>
 		<h3>Какие проблемы решают:<h3>
 		<ul>
 			<li class="next">Уменьшение количества повторяющегося кода в CSS</li>
@@ -181,12 +179,12 @@
 	</section>
 
 	<section class="slide">
-		<h2>Кастомные свойства</h2>
+		<h2>Custom Properties</h2>
 		<h3>Поддержка</h3>
 		<img style="height: 290px" src="pictures/cp_canIuse.png" />
 	</section>
 	<section class="slide">
-		<h2>Кастомные свойства</h2>
+		<h2>Custom Properties</h2>
 		<pre>
 			<code>:root {</code>
 			<code class="mark">  --main-bg-color: brown;</code>
@@ -199,7 +197,7 @@
 	</section>
 
 	<section class="slide">
-		<h2>Кастомные свойства. Js</h2>
+		<h2>Custom Properties. Js</h2>
 		<pre>
 			<code>var styles = getComputedStyle(document.documentElement);</code>
 			<code>var value = String(styles.<mark class="important">getPropertyValue('--primary-color')</mark>).trim();</code>
@@ -209,7 +207,7 @@
 
 
 	<section class="slide">
-		<h2>Кастомные свойства. Первые впечатления</h2>
+		<h2>Custom Properties. Первые впечатления</h2>
 		<div>
 			<img src="pictures/What-Meme-13.jpg" style="float: left"/>
 			<h3>Все круто, но</h3>
