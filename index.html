@@ -20,15 +20,13 @@
 	</style>
 		<style>
 		:root {
-			--baseText: #fff;
+			--baseColor: #fff;
 		}
 		#example1 {
-			color: var(--baseText);
-			background: var(--baseText);
-
+			background: var(--baseColor);
 		}
 		#example1 .text{
-			color: var(--baseText);
+			color: var(--baseColor);
 			filter: invert(1);
 		}
 	</style>
@@ -38,7 +36,7 @@
 		var inputExample1 = document.getElementById('example1__input');
 		inputExample1.addEventListener("change", () => {
 			let inputExample1Val = inputExample1.value;
-			document.documentElement.style.setProperty('--baseText', inputExample1Val);
+			document.documentElement.style.setProperty('--baseColor', inputExample1Val);
 		});
 	}
 	</script>
@@ -166,7 +164,7 @@
 		</ul>
 
 		<div class="next">
-			--baseText = <input id="example1__input" style="height: 30px; background: inherit; font-size: 20px; color: inherit; border: none" value="#fff" type="text" />
+			--baseColor = <input id="example1__input" style="height: 30px; background: inherit; font-size: 20px; color: inherit; border: none" value="#fff" type="text" />
 		</div>
 		</div>
 	</section>
