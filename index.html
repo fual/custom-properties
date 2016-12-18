@@ -9,13 +9,66 @@
 	<style>
 		.slide {
 			padding-top: 30px;
-			padding-left:;
 		}
 		.slide::after {
 			right: 10px;
+			font-size: 25px;
+			line-height: 50px;
 		}
 		.slide pre {
 			font-size: 20px
+		}
+		.slide__side-left, .slide__side-right {
+			width: 50%; 
+			text-align: center;
+		}
+		.slide__side-left:before, .slide__side-right:before {
+			width: 50%;
+			height: 100%;
+			display: block;
+			content: '';
+			top: 0;
+			z-index: -1;
+			position: absolute;
+		}
+		.slide__side-left:before{
+			left: 0;
+			background-color: #FFCC40;
+		}
+		.slide__side-right:before  {
+			right: 0;
+			background-color: #7D44D6;
+		}
+
+		#example1__input {
+			   height: 38px;
+		}
+		.slide_theme_purple {
+			background-color: #7D44D6;
+		}
+		.slide_theme_yellow {
+			background: #FFCC40;
+		}
+		.slide_theme_blue {
+			background-color: #42aaff;
+		}
+		.slide_theme_raspberry {
+			background-color: #c50050;
+		}
+		.slide_theme_violet {
+			background-color: #8939a9;
+		}
+		.slide_theme_green {
+			background-color: #359c69;
+		}
+		.slide_theme_light-green {
+			background-color: #7ea91c;
+		}
+		.slide_theme_orange {
+			background-color: #E67014;
+		}
+		.slide_colorful h2 {
+		    color: white;
 		}
 	</style>
 		<style>
@@ -107,63 +160,35 @@
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center; padding: 0">
-	<style>
-	.slide__side-left, .slide__side-right {
-		width: 50%; 
-		text-align: center;
-	}
-	.slide__side-left:before, .slide__side-right:before {
-		width: 50%;
-		height: 100%;
-		display: block;
-		content: '';
-		top: 0;
-		z-index: -1;
-		position: absolute;
-	}
-	.slide__side-left:before{
-		left: 0;
-		background: #ff2400;
-	}
-	.slide__side-right:before  {
-		 background: #ccccff;
-		 right: 0;
-	}
-	#example1__input {
-		    height: 38px;
-		
-	ъ
-	}
-	</style>
 		<div class="slide__side-left"> 
 			Custom Properties
 		</div>
-		<div class="slide__side-right" style="width: 50%;">
+		<div class="slide__side-right">
 				@apply
 		</div>
 
 		
 	</section>
 
-	<section class="slide" style="background: #ff2400; font-size: 80px; display: flex; align-items: center; ">
-		<div> 
+	<section class="slide slide_colorful slide_theme_yellow ">
+		<h2 class="shout"> 
 			Custom Properties
-		</div>		
+		</h2>		
 	</section>  
 
 	<section class="slide" id="example1">
-<div class="text">
+
 		<h2>Custom Properties (CSS переменные)</h2>
+		<div class="text">
+			<ul>
+				<li class="next">Прорыв в CSS. Аналогичного функционала раньше не было</li>
+				<li class="next">Мощный инструмент, ограничение - ваша фантазия</li>
+				<li class="next">Не бойтесь использовать!</li>
+			</ul>
 
-		<ul>
-			<li class="next">Прорыв в CSS. Аналогичного функционала раньше не было</li>
-			<li class="next">Мощный инструмент, ограничение - ваша фантазия</li>
-			<li class="next">Не бойтесь использовать!</li>
-		</ul>
-
-		<div class="next">
-			--baseColor = <input id="example1__input" style="height: 30px; background: inherit; font-size: 20px; color: inherit; border: none" value="#fff" type="text" />
-		</div>
+			<div class="next">
+				--baseColor = <input id="example1__input" style="height: 30px; background: inherit; font-size: 20px; color: inherit; border: none" value="#fff" type="text" />
+			</div>
 		</div>
 	</section>
 
@@ -180,11 +205,6 @@
 
 	<section class="slide">
 		<h2>Custom Properties</h2>
-		<h3>Поддержка</h3>
-		<img style="height: 290px" src="pictures/cp_canIuse.png" />
-	</section>
-	<section class="slide">
-		<h2>Custom Properties</h2>
 		<pre>
 			<code>:root {</code>
 			<code class="mark">  --main-bg-color: brown;</code>
@@ -194,6 +214,15 @@
   			<code  class="mark">	background-color: <span>var(--main-bg-color);<span></code>
 			<code>}</code>
 		</pre>
+		<pre class="next">
+  			<code  class="mark">background-color: <span>var(--main-bg-color, #000);<span></code>
+		</pre>
+		<footer class="footer">
+			По спефикации, чтобы глобально объявить переменную, ее нужно объявлять в псевдо-классе root. Этот селектор соотвествуют корневому элементу. Для html - html 
+			Css переменные это свойства.
+			Чтобы объявить css переменную нужно записать свойство начинающиеся с двух минусов.
+			Чтобы получить свойство используется функция var. Она принимает два аргумента. Первый название переменной - обязательный, второй необезательный - значение по умолчанию
+		</footer>
 	</section>
 
 	<section class="slide">
@@ -203,6 +232,11 @@
 			<code>var value = String(styles.<mark class="important">getPropertyValue('--primary-color')</mark>).trim();</code>
 			<code>styles.<mark class="important">setProperty('--primary-color', 'green')</mark>;</code>
 		</pre>
+
+		<footer class="footer">
+		Как получить значение переменной?
+		Для того, чтобы получить все css свойства применяем метод getComputedStyle. И затем getPropertyValue.
+		</footer>
 	</section>
 
 
@@ -217,13 +251,13 @@
 			</ul>
 		</div>
 	</section>
-	<section class="slide" style="background: #ff2400; font-size: 60px; display: flex; align-items: center; ">
-		<div> 
+	<section class="slide slide_colorful slide_theme_blue">
+		<h2 class="shout"> 
 			Синтаксис
-		</div>		
+		</h2>		
 	</section>
 
-	<section class="slide white">
+	<section class="slide">
 		<h2><strike>$foo</strike></h2>
 		<ul>
 			<li>Допустимая лексема CSS.</li>
@@ -244,17 +278,21 @@
 		</footer>
 	</section>
 
-	<section class="slide" style="background: #ff2400; font-size: 60px; display: flex; align-items: center; ">
-		<div> 
+	<section class="slide slide_colorful slide_theme_green">
+		<h2 class="shout"> 
 			Отличия от переменных в препроцессорах
-		</div>		
+		</h3>		
 	</section>
 
 	<section class="slide">
+		<h2> 
+			Отличия от переменных в препроцессорах
+		</h3>
 			<ul>
-				<li>Переменные препроцессоров — исчезают при сборке.</li>
+				<li>переменные препроцессоров — исчезают при сборке.</li>
 				<li>CSS-переменные:
 					<ul>
+						<li>для записи не нужен препроцессор</li>
 						<li>работают в runtime, доступны для чтения/изменения;</li>
 						<li>живут в DOM'е, ограничены скоупом узла, наследуются до последнего потомка;</li>
 						<li>учитывают каскад!</li>
@@ -263,10 +301,10 @@
 			</ul>
 	</section>
 
-	<section class="slide" style="background: #ff2400; font-size: 60px; display: flex; align-items: center; ">
-		<div> 
+	<section class="slide slide_colorful slide_theme_green">
+		<h2 class="shout"> 
 			@media
-		</div>		
+		</h2>		
 	</section>
 
 	<section class="slide">
@@ -304,28 +342,19 @@
 			<code>}</code>
 		</pre>
 	</section>
-<!--
 	<section class="slide">
-		<h2>@media запросы<br/>
-		<span style="color: red; font-size: 30px">PostCSS</span></h2>
-		<pre>
-			
-			<code>.Container {</code>
-			<code>	padding: 5px;</code>
-			<code>}</code>
-			<code>@media (min-width: 100px) {</code>
-			<code>.Container {</code>
-			<code>   padding: 20px;</code>
-			<code>  }</code>
-			<code>}</code>
-		</pre>
+		<h2>@media запросы</h2>
+		<img style="width: 100%" src="pictures/grid.gif">
+		<footer class="footer">
+		В данном примере CHRIS'a COYIER'a геометрия дива задается css переменными. Например при ширине экрана больше 300px ширина 50%, а если меньше - 25%
+		Это реализовано через изменение переменной в медиа запросе
+		</footer>
 	</section>
--->
 
-	<section class="slide" style="background: #ff2400; font-size: 60px; display: flex; align-items: center; ">
-		<div> 
+	<section class="slide slide_colorful slide_theme_green">
+		<h2 class="shout"> 
 			Каскад
-		</div>		
+		</h2>		
 	</section>
 
 	<section class="slide">
@@ -365,18 +394,33 @@
 		</pre>
 	</section>
 
-	<section class="slide" style="background: #ff2400; font-size: 60px; display: flex; align-items: center; ">
-		<div> 
-			Примеры использования
-		</div>		
+	<section class="slide slide_theme_orange slide_colorful">
+		<h2 class="shout"> 
+			Поддержка
+		</h2>		
 	</section>
 
+	<section class="slide">
+		<h2>Custom Properties</h2>
+		<img style="height: 290px; margin-left: -95px;" src="pictures/cp_canIuse.png" />
+	</section>
+
+	<section class="slide">
+		<h2>Custom Properties</h2>
+		<img style="width: 100%" src="pictures/screen-ie.png" />
+	</section>
+
+	<section class="slide slide_theme_raspberry slide_colorful">
+		<h2 class="shout"> 
+			Примеры использования
+		</h2>		
+	</section>
 	<section class="slide">
 		<h2>Яндекс. Главная страница поиска</h2>
 		<p>Для чего используются CSS переменные</p>
 		<ul>
 			<li>Эксперементы</li>
-			<li>Контроль над цветом</li>
+			<li>Контроль над цветом и типографикой</li>
 			<li>Возможность изменять константы менеджерам</li>
 		</ul>
 	</section>
@@ -391,11 +435,10 @@
 			<li class="next"><code>initial</code></li>
 		</ul>
 	</section>
-
-	<section class="slide" style="background: #ff2400; font-size: 60px; display: flex; align-items: center; ">
-		<div> 
+	<section class="slide slide_theme_purple slide_colorful">
+		<h2 class="shout"> 
 			@apply
-		</div>		
+		</h2>		
 	</section>
 	<section class="slide">
 		<h2>@apply</h2>
@@ -427,6 +470,7 @@
 			<li>https://blog.gospodarets.com/CSS_properties_in_depth</li>
 			<li>https://tabatkins.github.io/specs/CSS-apply-rule/</li>
 			<li>https://blog.gospodarets.com/CSS_apply_rule?utm_source=CSS-Weekly&utm_campaign=Issue-211&utm_medium=email</li>
+			<li>https://css-tricks.com/difference-between-types-of-css-variables/</li>
 
 		</ol>
 	</section>  
