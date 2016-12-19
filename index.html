@@ -202,10 +202,10 @@
 		<h2>Custom Properties (CSS переменные)</h2>
 		<h3>Какие проблемы решают:<h3>
 		<ul>
-			<li class="next">Уменьшение количества повторяющегося кода в CSS</li>
-			<li class="next">Гибкость и управляемость кода</li>
-			<li class="next">Cоздание впечатляющих эффектов (смены тем на лету)</li>
-			<li class="next">Название содержит семантическую информацию</li>
+			<li>Уменьшение количества повторяющегося кода в CSS</li>
+			<li>Гибкость и управляемость кода</li>
+			<li>Cоздание впечатляющих эффектов (смены тем на лету)</li>
+			<li>Название содержит семантическую информацию</li>
 		</ul>
 		<footer class="footer">
 			CSS переменные и для чего они нужны.
@@ -359,30 +359,41 @@
 			Каскад
 		</h2>		
 	</section>
-
-	<section class="slide">
-		<h2>Что не могут препроцесорные переменные.<br/>
+<section class="slide">
+		<h2>Каскад<br/>
 		<span style="color: red; font-size: 30px">Stylus</span></h2>
-		<pre style="float: left">
-			<code>titleColor = #fff;</code>
+				<pre  style="float: left;">
+		<code>&lt;div class=&quot;sideBar&quot;&gt;</code>
+		<code>	&lt;div class=&quot;title&quot;&gt;Sidebar title&lt;/div&gt;</code>
+		 <code>&lt;/div&gt;</code>
+		 <code>&lt;div class=&quot;content&quot;&gt;</code>
+		 <code>	&lt;div class=&quot;title&quot;&gt;Original title&lt;/div&gt;</code>
+		 <code>&lt;/div&gt;</code>
+		
+		</pre>
+		<pre class="next" style="float: left; margin-left: 60px">
+			<code>titleColor = red;</code>
 			<code>.title {</code>
-			<code>  titleColor = #000</code>
-			<code>}</code>
-			<code>.sideBar .title {</code>
 			<code>  color: titleColor</code>
 			<code>}</code>
-		</pre>
-
-		<pre class="next" style="float: left; margin-left: 200px">
-			<code>.sideBar .title {</code>
-  			<code>color: #fff;</code>
+			<code>.sideBar {</code>
+			<code>  titleColor = blue</code>
 			<code>}</code>
 		</pre>
+		<pre class="next" style="float: left;">
+			<code>.title {</code>
+  			<code>color: red;</code>
+			<code>}</code>
 		</pre>
+
+
+
+
 	</section>
 
+
 	<section class="slide">
-		<h2>Что не могут препроцесорные переменные.<br/>
+		<h2>Каскад<br/>
 		<span style="color: red; font-size: 30px">CSS переменные</span></h2>
 		<pre style="float: left">
 			<code>:root {</code>
@@ -422,7 +433,7 @@
 		<h2>Яндекс. Главная страница поиска</h2>
 		<p>Для чего используются CSS переменные</p>
 		<ul>
-			<li>Эксперементы</li>
+			<li>Эксперименты</li>
 			<li>Контроль над цветом и типографикой</li>
 			<li>Возможность изменять константы менеджерам</li>
 		</ul>
