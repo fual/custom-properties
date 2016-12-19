@@ -190,6 +190,12 @@
 				--baseColor = <input id="example1__input" style="height: 30px; background: inherit; font-size: 20px; color: inherit; border: none" value="#fff" type="text" />
 			</div>
 		</div>
+		<footer class="footer">
+			Custom Properties - это css переменные. Аналог переменных из препроцессора. Но с гораздно большими возможностями.
+			Я уверен, что это прорыв для CSS, и возможности этого функционала еще не до конца иследованы!
+			Мощь зависит от вашей фантазии!
+			Вот на что способна моя фантазия)
+		</footer>
 	</section>
 
 	<section class="slide">
@@ -201,6 +207,10 @@
 			<li class="next">Cоздание впечатляющих эффектов (смены тем на лету)</li>
 			<li class="next">Название содержит семантическую информацию</li>
 		</ul>
+		<footer class="footer">
+			CSS переменные и для чего они нужны.
+
+		</footer>
 	</section>
 
 	<section class="slide">
@@ -219,8 +229,8 @@
 		</pre>
 		<footer class="footer">
 			По спефикации, чтобы глобально объявить переменную, ее нужно объявлять в псевдо-классе root. Этот селектор соотвествуют корневому элементу. Для html - html 
-			Css переменные это свойства.
-			Чтобы объявить css переменную нужно записать свойство начинающиеся с двух минусов.
+			Css переменные это свойства. Чтобы объявить css переменную нужно записать свойство начинающиеся с двух минусов.
+			As a value you can use colors, strings, values
 			Чтобы получить свойство используется функция var. Она принимает два аргумента. Первый название переменной - обязательный, второй необезательный - значение по умолчанию
 		</footer>
 	</section>
@@ -258,23 +268,13 @@
 	</section>
 
 	<section class="slide">
-		<h2><strike>$foo</strike></h2>
+		<h2>Почему такой синтаксис?</h2>
 		<ul>
+			<li>Custom Properties - не переменные. Надо оставить будущим переменным</li>
 			<li>Допустимая лексема CSS.</li>
-			<li><code>--variable:&nbsp;<mark>value</mark></code>.</li>
-			<li>Fallback.</li>
 		</ul>
 		<footer class="footer">
-			<ul>
-				<li>Слово авторам спеки Табу Аткинсу и Дэвиду Глазману.</li>
-				<li>$foo — неправильные аналогии с переменными ЯП и макросами препроцессоров, а это не то, чем являются пользовательские свойства:
-					<ul>
-						<li>Значение — набор допустимых лексем CSS, не предполагают частичную замену строк.</li>
-						<li>Использование только на правой стороне декларации — неуместное ограничение для переменных или макросов.</li>
-						<li>Необходим опциональный аргумент для механизма fallback'а.</li>
-					</ul>
-				</li>
-			</ul>
+	
 		</footer>
 	</section>
 
@@ -316,7 +316,7 @@
 			<code>  gutter = 20px;</code>
 			<code>}</code>
 			<code>.Container {</code>
-			<code>  padding = gutter;</code>
+			<code>  padding: gutter;</code>
 			<code>}</code>
 		</pre>
 
@@ -325,6 +325,9 @@
   			<code> padding: 5px;</code>
 			<code>}</code>
 		</pre>
+		<footer class="footer">
+			У нас есть блок контейнер и мы задаем его отступы через переменную. Допустим при разных размерах экрана нам нужны разные отступы.
+		</footer>
 	</section>
 
 	<section class="slide">
@@ -366,7 +369,7 @@
 			<code>  titleColor = #000</code>
 			<code>}</code>
 			<code>.sideBar .title {</code>
-			<code>  color: --titleColor</code>
+			<code>  color: titleColor</code>
 			<code>}</code>
 		</pre>
 
@@ -425,7 +428,7 @@
 		</ul>
 	</section>
 	
-	<section class="slide white">
+	<section class="slide">
 		<h2>Рекомендации</h2>
 		<ul>
 			<li class="next"><code>:root</code></li>
@@ -438,21 +441,41 @@
 	<section class="slide slide_theme_purple slide_colorful">
 		<h2 class="shout"> 
 			@apply
-		</h2>		
+		</h2>	
+		<footer class="footer">
+			Если после моего рассказа вы задумались о переходе на чистый CSS, то у вас наверное возник вопрос а где же миксины?
+			И Таб Аткинс написал спецификацию которая вводит аналог миксинов в CSS - это apply правило
+		</footer>	
 	</section>
 	<section class="slide">
 		<h2>@apply</h2>
  		<ul>
-			<li class="next">Аналог миксина</li>
-			<li class="next">Позволяет подключать набор свойств</li>
-			<li class="next">Синтаксис как у кастомных свойств, только с "{ }"</li>
+			<li>Позволяет использовать в переменной набор свойств (Аналог миксина)</li>
+			<li>Синтаксис как у CSS переменных, только с "{ }"</li>
 		</ul>
-	</section>
-	<section class="slide">
-		<h2>@apply</h2>
-		<img class="next" src="pictures/apply.jpg" style="height: 450px"/>
+		<pre>
+			<code>:root {</code>
+			<code>	--pink-theme: {</code>
+			<code>		color: #6A8759;</code>
+			<code>		background-color: #F64778;</code>
+    		<code>	}</code>
+     		<code>}</code>
+			<code>body {</code>
+  			<code  class="mark">	@apply --pink-theme;</code>
+			<code>}</code>
+		</pre>
+		<footer class="footer">
+			Это спецификация позволяет нам использовать в перменной не только значения (цифры цвета) но и набор свойств, записанный квадратных скобочках.
+			Чтобы вывести такую переменную правило @apply(); На слайде я реализовал миксин для розовой темы, и присвоил его тегу body;
+			К сажалению эта фича находиться в стадии черновика, и реализована только в хроме под флагом.  Enable experimental Web Platform features
+		</footer>	
 	</section>
 
+	<section class="slide slide_theme_raspberry slide_colorful">
+		<h2 class="shout"> 
+			Выводы
+		</h2>		
+	</section>
 	<section class="slide">
 		<h2>Выводы</h2>
 		<ul>
@@ -460,6 +483,11 @@
 			<li>CSS переменные - мощный инструмент!</li>
 			<li>Не надо бояться использовать CSS переменные</li>
 		</ul>
+		<footer class="footer">
+			Надеюсь что в течении доклада я смог вас убедить, в том что
+			- сss развивается в сторону внедрения функционала препроцессоров
+			- Пожалуйста используйте css переменные это мощный не изведанный инструмент, мощь которого ограничена вашей фантазией
+		</footer>
 	</section>
 
 	<section class="slide">
