@@ -19,7 +19,7 @@
 			font-size: 20px
 		}
 		.slide__side-left, .slide__side-right {
-			width: 50%; 
+			width: 50%;
 			text-align: center;
 		}
 		.slide__side-left:before, .slide__side-right:before {
@@ -128,26 +128,24 @@
 	</section>
 	<section class="slide">
 		<h2>Куда катится CSS?</h2>
-			<img class="next cover" 
-			style="margin-top: 30px;"
-			src="pictures/griffin.gif" alt="CSS progress" /> 
-		
+			<img class="next cover" style="margin-top: 30px;" src="pictures/griffin.gif" alt="CSS progress" />
+
 	</section>
 	<section class="slide">
 		<h2>Куда катится CSS?</h2>
 		<div style="text-align: center" class="note">
-			<img src="pictures/progressCSS.png" alt="CSS progress" /> 
+			<img src="pictures/progressCSS.png" alt="CSS progress" />
 		</div>
 		<!--
 		<div class="note" style="overflow: hidden">
-			<img style="width: 200px; float: left;" src="pictures/cofee.png" alt="coffeescript" />  
+			<img style="width: 200px; float: left;" src="pictures/cofee.png" alt="coffeescript" />
 			<img style="height: 124px;
     margin-left: 100px;
     float: left;
     margin-top: 38px;" src="pictures/js.png" alt="coffeescript" />
 		</div>
 		<div class="note">
-			<img style="width: 200px; float: left; margin-top: 35px;" src="pictures/sass.png" alt="coffeescript" /> 
+			<img style="width: 200px; float: left; margin-top: 35px;" src="pictures/sass.png" alt="coffeescript" />
 			<img style="width: 200px; float: left; margin-left: 100px;" src="pictures/CSS.png" alt="coffeescript" />
 		</div>
 		-->
@@ -160,21 +158,21 @@
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center; padding: 0">
-		<div class="slide__side-left"> 
+		<div class="slide__side-left">
 			Custom Properties
 		</div>
 		<div class="slide__side-right">
 				@apply
 		</div>
 
-		
+
 	</section>
 
 	<section class="slide slide_colorful slide_theme_yellow ">
-		<h2 class="shout"> 
+		<h2 class="shout">
 			Custom Properties
-		</h2>		
-	</section>  
+		</h2>
+	</section>
 
 	<section class="slide" id="example1">
 
@@ -200,7 +198,7 @@
 
 	<section class="slide">
 		<h2>Custom Properties (CSS переменные)</h2>
-		<h3>Какие проблемы решают:<h3>
+		<h3>Какие проблемы решают:</h3>
 		<ul>
 			<li>Уменьшение количества повторяющегося кода в CSS</li>
 			<li>Гибкость и управляемость кода</li>
@@ -221,15 +219,15 @@
 			<code>}</code>
 			<code> </code>
 			<code>body {</code>
-  			<code  class="mark">	background-color: <span>var(--main-bg-color);<span></code>
+  			<code  class="mark">	background-color: <span>var(--main-bg-color);</span></code>
 			<code>}</code>
 		</pre>
 		<pre class="next">
-  			<code  class="mark">background-color: <span>var(--main-bg-color, #000);<span></code>
+  			<code  class="mark">background-color: <span>var(--main-bg-color, #000);</span></code>
 		</pre>
 		<footer class="footer">
-			По спефикации, чтобы глобально объявить переменную, ее нужно объявлять в псевдо-классе root. Этот селектор соотвествуют корневому элементу. Для html - html 
-			Css переменные это свойства. Чтобы объявить css переменную нужно записать свойство начинающиеся с двух минусов.
+			По спефикации, чтобы глобально объявить переменную, ее нужно объявлять в псевдо-классе root. Этот селектор соотвествуют корневому элементу. Для html - html
+			Css переменные это свойства. Чтобы объявить css переменную нужно записать свойство начинающиеся с двух дефисов.
 			As a value you can use colors, strings, values
 			Чтобы получить свойство используется функция var. Она принимает два аргумента. Первый название переменной - обязательный, второй необезательный - значение по умолчанию
 		</footer>
@@ -238,14 +236,17 @@
 	<section class="slide">
 		<h2>Custom Properties. Js</h2>
 		<pre>
-			<code>var styles = getComputedStyle(document.documentElement);</code>
-			<code>var value = String(styles.<mark class="important">getPropertyValue('--primary-color')</mark>).trim();</code>
-			<code>styles.<mark class="important">setProperty('--primary-color', 'green')</mark>;</code>
+			<code>var documentProperties = getComputedStyle(document.documentElement);</code>
+			<code>var value = String(documentProperties.<mark class="important">getPropertyValue('--primary-color')</mark>).trim();</code>
+			<code>documentProperties.<mark class="important">setProperty('--primary-color', 'green')</mark>;</code>
 		</pre>
 
 		<footer class="footer">
 		Как получить значение переменной?
-		Для того, чтобы получить все css свойства применяем метод getComputedStyle. И затем getPropertyValue.
+		В javascripte существует глобальный метод getComputedStyle. Он возвращает для переденного DOM-элемента объект с свойствами которые применяются, к этому элементу.
+		У такого объекта со свойства существуют getter и setter.
+		Чтобы получить для данного элемента конкретное свойство изпользуем метод getPropertyValue.
+		Чтобы переопределеить свойство элемента применяем setProperty
 		</footer>
 	</section>
 
@@ -262,9 +263,9 @@
 		</div>
 	</section>
 	<section class="slide slide_colorful slide_theme_blue">
-		<h2 class="shout"> 
+		<h2 class="shout">
 			Синтаксис
-		</h2>		
+		</h2>
 	</section>
 
 	<section class="slide">
@@ -274,20 +275,20 @@
 			<li>Допустимая лексема CSS.</li>
 		</ul>
 		<footer class="footer">
-	
+
 		</footer>
 	</section>
 
 	<section class="slide slide_colorful slide_theme_green">
-		<h2 class="shout"> 
+		<h2 class="shout">
 			Отличия от переменных в препроцессорах
-		</h3>		
+		</h2>
 	</section>
 
 	<section class="slide">
-		<h2> 
+		<h2>
 			Отличия от переменных в препроцессорах
-		</h3>
+		</h2>
 			<ul>
 				<li>переменные препроцессоров — исчезают при сборке.</li>
 				<li>CSS-переменные:
@@ -302,9 +303,9 @@
 	</section>
 
 	<section class="slide slide_colorful slide_theme_green">
-		<h2 class="shout"> 
+		<h2 class="shout">
 			@media
-		</h2>		
+		</h2>
 	</section>
 
 	<section class="slide">
@@ -355,9 +356,9 @@
 	</section>
 
 	<section class="slide slide_colorful slide_theme_green">
-		<h2 class="shout"> 
+		<h2 class="shout">
 			Каскад
-		</h2>		
+		</h2>
 	</section>
 <section class="slide">
 		<h2>Каскад<br/>
@@ -369,7 +370,7 @@
 		 <code>&lt;div class=&quot;content&quot;&gt;</code>
 		 <code>	&lt;div class=&quot;title&quot;&gt;Original title&lt;/div&gt;</code>
 		 <code>&lt;/div&gt;</code>
-		
+
 		</pre>
 		<pre class="next" style="float: left; margin-left: 60px">
 			<code>titleColor = red;</code>
@@ -409,9 +410,9 @@
 	</section>
 
 	<section class="slide slide_theme_orange slide_colorful">
-		<h2 class="shout"> 
+		<h2 class="shout">
 			Поддержка
-		</h2>		
+		</h2>
 	</section>
 
 	<section class="slide">
@@ -425,9 +426,9 @@
 	</section>
 
 	<section class="slide slide_theme_raspberry slide_colorful">
-		<h2 class="shout"> 
+		<h2 class="shout">
 			Примеры использования
-		</h2>		
+		</h2>
 	</section>
 	<section class="slide">
 		<h2>Яндекс. Главная страница поиска</h2>
@@ -438,7 +439,7 @@
 			<li>Возможность изменять константы менеджерам</li>
 		</ul>
 	</section>
-	
+
 	<section class="slide">
 		<h2>Рекомендации</h2>
 		<ul>
@@ -450,13 +451,13 @@
 		</ul>
 	</section>
 	<section class="slide slide_theme_purple slide_colorful">
-		<h2 class="shout"> 
+		<h2 class="shout">
 			@apply
-		</h2>	
+		</h2>
 		<footer class="footer">
 			Если после моего рассказа вы задумались о переходе на чистый CSS, то у вас наверное возник вопрос а где же миксины?
-			И Таб Аткинс написал спецификацию которая вводит аналог миксинов в CSS - это apply правило
-		</footer>	
+			И Таб Аткинс написал спецификацию которая вводит аналог миксинов в CSS - это apply деректива
+		</footer>
 	</section>
 	<section class="slide">
 		<h2>@apply</h2>
@@ -477,15 +478,15 @@
 		</pre>
 		<footer class="footer">
 			Это спецификация позволяет нам использовать в перменной не только значения (цифры цвета) но и набор свойств, записанный квадратных скобочках.
-			Чтобы вывести такую переменную правило @apply(); На слайде я реализовал миксин для розовой темы, и присвоил его тегу body;
+			Чтобы вывести такую переменную деректива @apply(); На слайде я реализовал миксин для розовой темы, и присвоил его тегу body;
 			К сажалению эта фича находиться в стадии черновика, и реализована только в хроме под флагом.  Enable experimental Web Platform features
-		</footer>	
+		</footer>
 	</section>
 
 	<section class="slide slide_theme_raspberry slide_colorful">
-		<h2 class="shout"> 
+		<h2 class="shout">
 			Выводы
-		</h2>		
+		</h2>
 	</section>
 	<section class="slide">
 		<h2>Выводы</h2>
@@ -512,7 +513,7 @@
 			<li>https://css-tricks.com/difference-between-types-of-css-variables/</li>
 
 		</ol>
-	</section>  
+	</section>
 	<section class="slide" id="see-more">
 		<h2 class="shout">
 			Спасибо!
