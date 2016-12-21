@@ -180,13 +180,13 @@
 		<h2>Custom Properties (CSS переменные)</h2>
 		<div class="text">
 			<ul>
-				<li class="next">Прорыв в CSS. Аналогичного функционала раньше не было</li>
-				<li class="next">Мощный инструмент, ограничение - ваша фантазия</li>
-				<li class="next">Не бойтесь использовать!</li>
+				<li>Прорыв в CSS. Аналогичного функционала раньше не было.</li>
+				<li>Мощный инструмент, ограниченный лишь вашей фантазией.</li>
+				<li>Не бойтесь использовать!</li>
 			</ul>
-
+	
 			<div class="next">
-				--baseColor = <input id="example1__input" style="height: 30px; background: inherit; font-size: 20px; color: inherit; border: none" value="#fff" type="text" />
+				--baseColor: <input id="example1__input" style="height: 30px; background: inherit; font-size: 30px; color: inherit; border: none" value="#fff" type="text" />
 			</div>
 		</div>
 		<footer class="footer">
@@ -201,10 +201,10 @@
 		<h2>Custom Properties (CSS переменные)</h2>
 		<h3>Какие проблемы решают:</h3>
 		<ul>
-			<li>Уменьшение количества повторяющегося кода в CSS</li>
-			<li>Гибкость и управляемость кода</li>
-			<li>Cоздание впечатляющих эффектов (смены тем на лету)</li>
-			<li>Название содержит семантическую информацию</li>
+			<li>Уменьшение количества повторяющегося кода в CSS.</li>
+			<li>Гибкость и управляемость кода.</li>
+			<li>Cоздание впечатляющих эффектов (смены тем на лету).</li>
+			<li>Название содержит семантическую информацию.</li>
 		</ul>
 		<footer class="footer">
 			CSS переменные и для чего они нужны.
@@ -236,10 +236,19 @@
 
 	<section class="slide">
 		<h2>Custom Properties. Js</h2>
+		<p><strong>Получаем:</strong></p>
 		<pre>
 			<code>var documentProperties = getComputedStyle(document.documentElement);</code>
-			<code>var value = String(documentProperties.<mark class="important">getPropertyValue('--primary-color')</mark>).trim();</code>
-			<code>documentProperties.<mark class="important">setProperty('--primary-color', 'green')</mark>;</code>
+			<code>var value = documentProperties.<mark class="important">getPropertyValue('--primary-color')</mark>;</code>
+		</pre>
+		
+		<p><strong>Назначаем</strong></p>
+		<pre>
+			<code>element.style.<mark class="important">setProperty</mark>('--variable', 'value');</code>
+		</pre>
+		<p><strong>Удаляем</strong></p>
+		<pre>
+			<code>element.style.<mark class="important">removeProperty</mark>('--variable');</code>
 		</pre>
 
 		<footer class="footer">
@@ -291,13 +300,13 @@
 			Отличия от переменных в препроцессорах
 		</h2>
 			<ul>
-				<li>переменные препроцессоров — исчезают при сборке.</li>
-				<li>CSS-переменные:
+				<li>Переменные препроцессоров исчезают при сборке.</li>
+				<li>CSS переменные:
 					<ul>
-						<li>для записи не нужен препроцессор</li>
-						<li>работают в runtime, доступны для чтения/изменения;</li>
-						<li>живут в DOM'е, ограничены скоупом узла, наследуются до последнего потомка;</li>
-						<li>учитывают каскад!</li>
+						<li>Для записи не нужен препроцессор.</li>
+						<li>Работают в runtime, доступны для чтения/изменения.</li>
+						<li>Живут в DOM'е, ограничены скоупом узла, наследуются до последнего потомка.</li>
+						<li>Учитывают каскад.</li>
 					</ul>
 				</li>
 			</ul>
@@ -387,16 +396,13 @@
   			<code>color: red;</code>
 			<code>}</code>
 		</pre>
-
-
-
-
 	</section>
 
 
 	<section class="slide">
 		<h2>Каскад<br/>
 		<span style="color: red; font-size: 30px">CSS переменные</span></h2>
+
 		<pre style="float: left">
 			<code>:root {</code>
 			<code>  --titleColor: red;</code>
@@ -408,6 +414,8 @@
 			<code>  --titleColor: blue;</code>
 			<code>}</code>
 		</pre>
+		<div style="float: left; margin-left: 50px;">
+		</div>
 	</section>
 
 	<section class="slide slide_theme_orange slide_colorful">
@@ -431,13 +439,26 @@
 			Примеры использования
 		</h2>
 	</section>
+
 	<section class="slide">
 		<h2>Яндекс. Главная страница поиска</h2>
-		<p>Для чего используются CSS переменные</p>
+		<p>Для чего используются CSS переменные?</p>
 		<ul>
-			<li>Эксперименты</li>
-			<li>Контроль над цветом и типографикой</li>
-			<li>Возможность изменять константы менеджерам</li>
+			<li>Эксперименты.</li>
+			<li>Контроль над цветом и типографикой.</li>
+			<li>Менеджеры могут изменять константы.</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Custom Properties</h2>
+		<p>Интересные решения:</p>
+		<ul>
+			<li>I18N.</li>
+			<li>Autoprefixer.</li>
+			<li>Контроль над рендирингом страницы.</li>
+			<li>Условные операторы.</li>
+			<li>RxJs + Custom Properties.</li>
 		</ul>
 	</section>
 
@@ -463,8 +484,8 @@
 	<section class="slide">
 		<h2>@apply</h2>
  		<ul>
-			<li>Позволяет использовать в переменной набор свойств (Аналог миксина)</li>
-			<li>Синтаксис как у CSS переменных, только с "{ }"</li>
+			<li>Позволяет использовать в переменной набор свойств (аналог миксина).</li>
+			<li>Синтаксис как у CSS переменных, только с "{ }".</li>
 		</ul>
 		<pre>
 			<code>:root {</code>
@@ -490,11 +511,11 @@
 		</h2>
 	</section>
 	<section class="slide">
-		<h2>Выводы</h2>
+		<h2>Выводы:</h2>
 		<ul>
-			<li>Фичи из препроцессоров внедряются в CSS</li>
-			<li>CSS переменные - мощный инструмент!</li>
-			<li>Не надо бояться использовать CSS переменные</li>
+			<li>Фичи из препроцессоров внедряются в CSS.</li>
+			<li>CSS переменные - мощный инструмент.</li>
+			<li>Не надо бояться использовать CSS переменные.</li>
 		</ul>
 		<footer class="footer">
 			Надеюсь что в течении доклада я смог вас убедить, в том что
@@ -506,13 +527,12 @@
 	<section class="slide">
 		<h2>Ссылки</h2>
 		<ol>
-			<li>http://frontender.info/CSS-variables-why-should-you-care/</li>
-			<li>http://philipwalton.com/articles/why-im-excited-about-native-CSS-variables/</li>
-			<li>https://blog.gospodarets.com/CSS_properties_in_depth</li>
-			<li>https://tabatkins.github.io/specs/CSS-apply-rule/</li>
-			<li>https://blog.gospodarets.com/CSS_apply_rule?utm_source=CSS-Weekly&utm_campaign=Issue-211&utm_medium=email</li>
-			<li>https://css-tricks.com/difference-between-types-of-css-variables/</li>
-
+			<li><a href="https://css-tricks.com/difference-between-types-of-css-variables/">What is the difference between CSS variables and preprocessor variables?</a></li>
+			<li><a href="http://frontender.info/css-variables-why-should-you-care/">Переменные в CSS: зачем они нам?</a></li>
+			<li><a href="https://www.youtube.com/watch?v=MmlJYjnHXhM">Пользовательские свойства как основа архитектуры CSS - Павел Ловцевич</a></li>
+			<li><a href="https://blog.hospodarets.com/css_properties_in_depth">CSS custom properties (native variables) In-Depth</a></li>
+			<li><a href="https://tabatkins.github.io/specs/css-apply-rule/">CSS @apply Rule</a></li>
+			<li><a href="https://blog.gospodarets.com/css_apply_rule">CSS @apply rule (native CSS mixins)</a></li>
 		</ol>
 	</section>
 	<section class="slide" id="see-more">
